@@ -127,6 +127,7 @@ void life() {
 
     while (number < age) {
         number++;
+        cout << number;
     }
 }
 
