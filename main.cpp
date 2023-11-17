@@ -125,6 +125,9 @@ void life() {
     cout << endl << endl << "Стартовое поколение" << endl;
     show(past);
 
+    while (number < age) {
+        number++;
+    }
 }
 
 int main() {
