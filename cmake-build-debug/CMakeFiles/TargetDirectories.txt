@@ -1,3 +1,0 @@
-C:/Users/Danov/CLionProjects/bacteria/cmake-build-debug/CMakeFiles/bacteria.dir
-C:/Users/Danov/CLionProjects/bacteria/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Danov/CLionProjects/bacteria/cmake-build-debug/CMakeFiles/rebuild_cache.dir
