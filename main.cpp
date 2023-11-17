@@ -121,6 +121,8 @@ void life() {
         }
         cout << endl;
     }
+    int number = 1;
+    cout << endl << endl << "Стартовое поколение" << endl;
     show(past);
 
 }
