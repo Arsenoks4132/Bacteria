@@ -41,9 +41,14 @@ int ichek(string x = "") {
 int neighbor(vector<vector<int>> home, int y, int x) {
     int h = home.size();
     int w = home[0].size();
-    int cnt = -1;
+    int cnt = 0;
     int y_st = y - 1, y_ed = y + 1;
     int x_st = x - 1, x_ed = x + 1;
+
+    if (home[y][x] > 0) {
+        --cnt;
+    }
+
     if (y == 0) {
         y_st = y;
     }
@@ -121,13 +126,35 @@ void life() {
         }
         cout << endl;
     }
-    int number = 1;
     cout << endl << endl << "Стартовое поколение" << endl;
     show(past);
 
-    while (number < age) {
-        number++;
-        cout << number;
+    int cbact, cneigh;
+
+    for (int generation = 1; generation <= age; ++generation) {
+        for (int i = 0; i < msize; ++i) {
+            for (int j = 0; j < msize; ++j) {
+                cbact = past[i][j];
+                cneigh = neighbor(past, i, j);
+                if (cbact > 0) {
+                    if (cbact == 11 || cneigh > 3 || cneigh < 2) {
+                        cbact = 0;
+                    }
+                    else {
+                        ++cbact;
+                    }
+                }
+                else {
+                    if (cneigh == 3) {
+                        cbact = 1;
+                    }
+                }
+                future[i][j] = cbact;
+            }
+        }
+        cout << "Поколение " << generation << endl;
+        show(future);
+        past = future;
     }
 }
 
