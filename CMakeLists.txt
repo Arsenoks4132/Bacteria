@@ -3,5 +3,4 @@ project(bacteria)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(bacteria main.cpp
-        kekw.h)
+add_executable(bacteria main.cpp)
