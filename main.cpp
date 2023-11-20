@@ -82,8 +82,7 @@ string show(vector<vector<int>> vect) {
             }
             if (vect[i][j] == 0) {
                 s += "  ";
-            }
-            else {
+            } else {
                 s += ' ' + to_string(vect[i][j]);
             }
         }
@@ -116,20 +115,38 @@ void life() {
     char isBact = (char) (gen() % lets + 'A');
     char cur;
 
-    cout << "В чашке петри множество разных частичек, но только \'" << isBact << "\' - микроб:" << endl;
+    ofstream file("work.out");
+
+    string cs = "";
+
+    cs = "В чашке петри множество разных частичек, но только \'" + to_string(isBact) + "\' - микроб:" + "\n";
+    cout << cs;
+    file << cs;
+
     for (int i = 0; i < msize; ++i) {
         for (int j = 0; j < msize; ++j) {
             cur = (char) (gen() % lets + 'A');
             home[i][j] = cur;
-            cout << cur << ' ';
+
+            cs = cur + ' ';
+            cout << cs;
+            file << cs;
+
             if (cur == isBact) {
                 past[i][j] = 1;
             }
         }
         cout << endl;
+        file << '\n';
     }
-    cout << endl << endl << "Стартовое поколение" << endl;
-    cout << show(past);
+
+    cs = "\n\nСтартовое поколение\n";
+    cout << cs;
+    file << cs;
+
+    cs = show(past);
+    cout << cs;
+    file << cs;
 
     int cbact, cneigh;
 
@@ -141,12 +158,10 @@ void life() {
                 if (cbact > 0) {
                     if (cbact == 11 || cneigh > 3 || cneigh < 2) {
                         cbact = 0;
-                    }
-                    else {
+                    } else {
                         ++cbact;
                     }
-                }
-                else {
+                } else {
                     if (cneigh == 3) {
                         cbact = 1;
                     }
@@ -154,8 +169,13 @@ void life() {
                 future[i][j] = cbact;
             }
         }
-        cout << "Поколение " << generation << endl;
-        cout << show(future);
+        cs = "Поколение " + to_string(generation) + "\n";
+        cout << cs;
+        file << cs;
+
+        cs = show(future);
+        cout << cs;
+        file << cs;
         past = future;
     }
 }
