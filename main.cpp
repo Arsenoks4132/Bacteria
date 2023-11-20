@@ -72,22 +72,24 @@ int neighbor(vector<vector<int>> home, int y, int x) {
     return cnt;
 }
 
-void show(vector<vector<int>> vect) {
+string show(vector<vector<int>> vect) {
+    string s = "";
     int msize = vect.size();
     for (int i = 0; i < msize; ++i) {
         for (int j = 0; j < msize; ++j) {
             if (vect[i][j] < 10) {
-                cout << ' ';
+                s += ' ';
             }
             if (vect[i][j] == 0) {
-                cout << "  ";
+                s += "  ";
             }
             else {
-                cout << ' ' << vect[i][j];
+                s += ' ' + to_string(vect[i][j]);
             }
         }
-        cout << endl;
+        s += "\n";
     }
+    return s;
 }
 
 void life() {
@@ -127,7 +129,7 @@ void life() {
         cout << endl;
     }
     cout << endl << endl << "Стартовое поколение" << endl;
-    show(past);
+    cout << show(past);
 
     int cbact, cneigh;
 
@@ -153,7 +155,7 @@ void life() {
             }
         }
         cout << "Поколение " << generation << endl;
-        show(future);
+        cout << show(future);
         past = future;
     }
 }
