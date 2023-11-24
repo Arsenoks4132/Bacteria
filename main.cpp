@@ -119,7 +119,9 @@ void life() {
 
     string cs = "";
 
-    cs = "В чашке петри множество разных частичек, но только \'" + to_string(isBact) + "\' - микроб:" + "\n";
+    string isBactCh(1, isBact);
+
+    cs = "В чашке петри множество разных частичек, но только \'" + isBactCh + "\' - микроб:" + "\n";
     cout << cs;
     file << cs;
 
@@ -178,6 +180,7 @@ void life() {
         file << cs;
         past = future;
     }
+    file.close();
 }
 
 int main() {
